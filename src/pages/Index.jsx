@@ -42,7 +42,7 @@ const Index = () => {
   const renderSquare = (index) => (
     <Button
       variant="outline"
-      className="w-16 h-16 text-2xl"
+      className="w-16 h-16 text-2xl rounded-full border-2 border-blue-500"
       onClick={() => handleClick(index)}
     >
       {board[index]}
@@ -56,21 +56,21 @@ const Index = () => {
   };
 
   return (
-    <div className="h-screen w-screen flex flex-col items-center justify-center space-y-4">
-      <Card className="p-4">
+    <div className="h-screen w-screen flex flex-col items-center justify-center space-y-4 bg-gradient-to-r from-purple-400 via-pink-500 to-red-500">
+      <Card className="p-4 rounded-lg shadow-lg bg-white">
         <CardHeader>
-          <CardTitle className="text-center text-3xl">Tic Tac Toe</CardTitle>
+          <CardTitle className="text-center text-3xl font-bold text-gray-800">Tic Tac Toe</CardTitle>
         </CardHeader>
         <CardContent className="grid grid-cols-3 gap-2">
           {board.map((_, index) => renderSquare(index))}
         </CardContent>
       </Card>
       {winner && (
-        <div className="text-center text-2xl">
+        <div className="text-center text-2xl font-bold text-white">
           {winner === "Draw" ? "It's a Draw!" : `Winner: ${winner}`}
         </div>
       )}
-      <Button onClick={resetGame}>Reset Game</Button>
+      <Button className="rounded-full bg-blue-500 text-white px-4 py-2 mt-4" onClick={resetGame}>Reset Game</Button>
     </div>
   );
 };
